@@ -151,7 +151,7 @@ We will use **TensorFlow\.js** with **COCO-SSD** for in-browser object detection
 
 ## 🌐 Live Demo
 
-> 🔗 [https://refixly.vercel.app](https://refixly.vercel.app) *(Update with your live link)*
+> 🔗 [https://refixly.vercel.app](https://refixly.vercel.app)
 
 ---
 
