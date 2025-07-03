@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
-
-// Add glow CSS via Tailwind's global CSS or inline style tag
-// Or you can put this in your index.css or App.css:
-//
-// .faq-glow {
-//   box-shadow: 0 0 12px 3px #38BDF8;
-//   transition: box-shadow 0.3s ease-in-out;
-// }
+import 'aos/dist/aos.css';
+import '../index.css';
+import ScrollToTop from '../components/ScrollTop';
 
 const FAQAccordion = ({ faqs }) => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -50,8 +44,8 @@ const Home = () => {
   useEffect(() => {
     AOS.init({
       duration: 1200,
-      once: false,  // Animate each time it enters viewport
-      mirror: true, // Animate on scroll up and down
+      once: false,
+      mirror: true,
     });
   }, []);
 
@@ -86,8 +80,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-[#0F172A] via-[#1E293B] to-[#334155] text-white font-sans">
-      {/* Global glow CSS */}
+    <div className="min-h-screen bg-gradient-to-tr from-[#0F172A] via-[#1E293B] to-[#334155] text-white font-sans overflow-x-hidden">
       <style>{`
         .faq-glow {
           box-shadow: 0 0 12px 3px #38BDF8;
@@ -96,10 +89,10 @@ const Home = () => {
       `}</style>
 
       {/* Header */}
-      <header className="max-w-7xl mx-auto flex justify-between items-center py-8 px-6 md:px-20" data-aos="fade-down">
-        <h1 className="text-3xl font-extrabold text-[#38BDF8] cursor-default">Refixly</h1>
+      <header className="max-w-7xl mx-auto flex justify-between items-center py-8 px-4 sm:px-6 md:px-20" data-aos="fade-down">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#38BDF8]">Refixly</h1>
         <nav>
-          <ul className="flex space-x-8 text-lg">
+          <ul className="hidden md:flex space-x-6 text-sm sm:text-base">
             <li><a href="#how-it-works" className="hover:text-[#0EA5E9] transition">How It Works</a></li>
             <li><a href="#features" className="hover:text-[#0EA5E9] transition">What Refixly Can Do</a></li>
             <li><a href="#faq" className="hover:text-[#0EA5E9] transition">FAQ</a></li>
@@ -108,68 +101,58 @@ const Home = () => {
         </nav>
       </header>
 
-      {/* Hero */}
-      <section className="max-w-7xl mx-auto px-6 md:px-20 py-28" data-aos="fade-up">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-14">
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-16 text-center md:text-left" data-aos="fade-up">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
           <div className="flex-1 max-w-xl">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-wide">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
               Welcome to <span className="text-[#38BDF8]">Refixly</span>
             </h1>
-            <p className="mt-6 text-[#94A3B8] text-lg md:text-xl leading-relaxed">
+            <p className="mt-6 text-[#94A3B8] text-base sm:text-lg leading-relaxed">
               Your AI-powered DIY repair assistant. Detect. Learn. Repair.
             </p>
             <Link
               to="/login"
-              className="inline-block mt-10 px-8 py-4 bg-[#38BDF8] text-black font-semibold rounded-3xl shadow-lg hover:bg-[#0EA5E9] transition duration-300 ease-in-out"
+              className="inline-block mt-8 px-8 py-3 bg-[#38BDF8] text-black font-semibold rounded-full shadow-lg hover:bg-[#0EA5E9] transition"
             >
               Get Started
             </Link>
           </div>
-
-          <div className="flex-1 flex justify-center" data-aos="fade-left" data-aos-delay="300">
+          <div className="flex-1 flex justify-center">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png"
-              alt="Repair illustration"
-              className="w-80 md:w-[30rem] drop-shadow-2xl"
+              alt="Repair"
+              className="w-60 sm:w-80 md:w-[28rem] drop-shadow-2xl"
             />
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="max-w-7xl mx-auto px-6 md:px-20 py-20" data-aos="fade-right">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#38BDF8]">How It Works</h2>
-        <div className="grid md:grid-cols-3 gap-10 text-center text-[#CBD5E1]">
-          <div className="bg-[#334155] p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-default">
-            <div className="text-6xl mb-4">🎥</div>
-            <h3 className="text-2xl font-semibold mb-2">Scan</h3>
-            <p>Use your webcam to scan the broken item for AI diagnosis.</p>
-          </div>
-          <div className="bg-[#334155] p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-default">
-            <div className="text-6xl mb-4">📚</div>
-            <h3 className="text-2xl font-semibold mb-2">Learn</h3>
-            <p>Access curated tutorials and step-by-step repair guides.</p>
-          </div>
-          <div className="bg-[#334155] p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-default">
-            <div className="text-6xl mb-4">🛠️</div>
-            <h3 className="text-2xl font-semibold mb-2">Repair</h3>
-            <p>Follow the guides to fix your item with confidence.</p>
-          </div>
+      <section id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-right">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">How It Works</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center text-[#CBD5E1]">
+          {['🎥 Scan', '📚 Learn', '🛠️ Repair'].map((step, i) => (
+            <div key={i} className="bg-[#334155] p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+              <h3 className="text-xl font-semibold mb-2">{step.split(' ')[1]}</h3>
+              <p>{['Use your webcam to scan the item.', 'Access step-by-step repair guides.', 'Follow tutorials to fix confidently.'][i]}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="max-w-7xl mx-auto px-6 md:px-20 py-20" data-aos="fade-left">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#38BDF8]">What Refixly Can Do</h2>
-        <div className="grid md:grid-cols-3 gap-10">
+      <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-left">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">What Refixly Can Do</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {features.map(({ title, desc }, i) => (
             <div
               key={i}
-              className="bg-[#334155] rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform duration-300 cursor-default"
+              className="bg-[#334155] rounded-2xl p-6 shadow-lg hover:scale-105 transition duration-300"
               data-aos="fade-up"
               data-aos-delay={i * 200}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-[#38BDF8]">{title}</h3>
+              <h3 className="text-xl font-semibold mb-4 text-[#38BDF8]">{title}</h3>
               <p className="text-[#CBD5E1]">{desc}</p>
             </div>
           ))}
@@ -177,26 +160,18 @@ const Home = () => {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="max-w-7xl mx-auto px-6 md:px-20 py-20" data-aos="fade-up">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#38BDF8]">Frequently Asked Questions</h2>
+      <section id="faq" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-up">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">Frequently Asked Questions</h2>
         <FAQAccordion faqs={faqs} />
       </section>
 
-      {/* Ready to Fix CTA */}
-      <section
-        id="ready"
-        className="bg-[#0F172A] py-20 text-center"
-        data-aos="zoom-in"
-      >
-        <h2 className="text-4xl font-bold mb-6 text-[#38BDF8]">
-          Ready to Fix it Yourself?
-        </h2>
-        <p className="text-[#94A3B8] max-w-xl mx-auto mb-8">
-          Join thousands of users who are repairing with confidence using Refixly.
-        </p>
+      {/* Call To Action */}
+      <section id="ready" className="bg-[#0F172A] py-20 text-center" data-aos="zoom-in">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#38BDF8]">Ready to Fix it Yourself?</h2>
+        <p className="text-[#94A3B8] max-w-xl mx-auto mb-8">Join thousands of users who are repairing with confidence using Refixly.</p>
         <Link
           to="/login"
-          className="inline-block px-14 py-4 bg-[#38BDF8] text-black font-semibold rounded-3xl shadow-lg hover:bg-[#0EA5E9] transition"
+          className="inline-block px-10 py-3 bg-[#38BDF8] text-black font-semibold rounded-full shadow-lg hover:bg-[#0EA5E9] transition"
         >
           Get Started Now
         </Link>
@@ -204,57 +179,24 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-[#1E293B] py-8 text-center text-[#94A3B8]">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
           <p>&copy; 2025 Refixly. All rights reserved.</p>
-          <div className="flex space-x-6 text-[#94A3B8]">
-            {/* Social icons with hover */}
-            <a
-              href="https://twitter.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="Twitter"
-            >
-              <svg
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+          <div className="flex space-x-6">
+            {['twitter', 'facebook', 'linkedin'].map((platform) => (
+              <a
+                key={platform}
+                href={`https://${platform}.com/yourhandle`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#38BDF8] transition"
+                aria-label={platform}
               >
-                <path d="M23 3a10.9 10.9 0 0 1-3.14.86A4.48 4.48 0 0 0 22.4.36a9.07 9.07 0 0 1-2.88 1.1A4.52 4.52 0 0 0 16.1 0c-2.5 0-4.52 2-4.52 4.5 0 .35.04.7.1 1.03A12.78 12.78 0 0 1 1.67 1.15 4.47 4.47 0 0 0 3 6a4.48 4.48 0 0 1-2-.56v.05a4.52 4.52 0 0 0 3.6 4.44 4.49 4.49 0 0 1-2 .08 4.52 4.52 0 0 0 4.2 3.12 9 9 0 0 1-5.58 1.93A8.95 8.95 0 0 1 0 18.57a12.7 12.7 0 0 0 6.89 2 12.68 12.68 0 0 0 12.77-13v-.59A9 9 0 0 0 23 3z" />
-              </svg>
-            </a>
-            <a
-              href="https://facebook.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="Facebook"
-            >
-              <svg
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M22 12a10 10 0 1 0-11.5 9.87v-7H8v-3h2.5v-2c0-2.47 1.49-3.82 3.78-3.82 1.09 0 2.23.2 2.23.2v2.47H15c-1.3 0-1.7.82-1.7 1.66v2h2.9l-.46 3h-2.44v7A10 10 0 0 0 22 12" />
-              </svg>
-            </a>
-            <a
-              href="https://linkedin.com/in/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="LinkedIn"
-            >
-              <svg
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.75v2.25h.07c.66-1.25 2.3-2.55 4.73-2.55 5.06 0 6 3.33 6 7.66V24H17v-7.5c0-1.8-.03-4.11-2.5-4.11-2.5 0-2.88 1.95-2.88 3.96V24H7.5V8z" />
-              </svg>
-            </a>
+                <i className={`fab fa-${platform} text-xl`}></i>
+              </a>
+            ))}
           </div>
         </div>
+        <ScrollToTop />
       </footer>
     </div>
   );

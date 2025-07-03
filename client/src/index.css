@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply overflow-x-hidden;
+}
+
+
+.faq-glow {
+  box-shadow: 0 0 12px 3px #38BDF8;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
