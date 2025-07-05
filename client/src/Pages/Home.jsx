@@ -1,205 +1,155 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// src/pages/Home.jsx
+import React, { useEffect } from 'react';
+import Navbar from '../components/NavBar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import '../index.css';
-import ScrollToTop from '../components/ScrollTop';
+import header from "../assets/header.jpg"; // Make sure this image exists
 
-const FAQAccordion = ({ faqs }) => {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (i) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto space-y-4">
-      {faqs.map(({ q, a }, i) => (
-        <div
-          key={i}
-          className={`bg-[#334155] rounded-2xl shadow-lg cursor-pointer select-none ${
-            openIndex === i ? 'faq-glow' : ''
-          }`}
-          onClick={() => toggle(i)}
-          aria-expanded={openIndex === i}
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') toggle(i);
-          }}
-        >
-          <div className="flex justify-between items-center p-6">
-            <h3 className="text-xl font-semibold">{q}</h3>
-            <span className="text-[#38BDF8] text-2xl">{openIndex === i ? '−' : '+'}</span>
-          </div>
-          {openIndex === i && (
-            <p className="px-6 pb-6 text-[#CBD5E1] border-t border-[#38BDF8]">{a}</p>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const Home = () => {
+const UserHome = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: false,
-      mirror: true,
-    });
+    AOS.init({ duration: 1000, easing: 'ease-in-out', once: false, mirror: true });
   }, []);
 
   const features = [
-    {
-      title: 'Real-time Object Detection',
-      desc: 'Scan broken items using your webcam and let AI identify the issue.',
-    },
-    {
-      title: 'Repair Tutorials',
-      desc: 'Get video guides and repair steps curated for your object.',
-    },
-    {
-      title: 'AR Repair Assistant (Coming Soon)',
-      desc: 'Visualize step-by-step repairs with Augmented Reality overlays.',
-    },
+    { icon: '🧠', title: 'AI Damage Detection', desc: 'Instant device analysis using AI.' },
+    { icon: '📺', title: 'Video Tutorials', desc: 'Step-by-step guidance tailored to you.' },
+    { icon: '🔧', title: 'AR Repair Assistant', desc: 'Overlay repair instructions using AR.' },
+    { icon: '📈', title: 'Progress Tracking', desc: 'Monitor your DIY repair journey.' },
+    { icon: '💡', title: 'Expert Tips', desc: 'Tips from tech repair experts & the community.' },
+    { icon: '📱', title: 'Mobile Friendly', desc: 'Repair anytime from any device.' },
+  ];
+
+  const steps = [
+    { icon: '📷', title: 'Scan Object', desc: 'Use your camera to detect issues instantly.' },
+    { icon: '📖', title: 'Get Tutorials', desc: 'Receive clear, relevant repair guides.' },
+    { icon: '🛠️', title: 'Repair with AR', desc: 'Follow real-time AR instructions.' },
+    { icon: '✅', title: 'Verify & Complete', desc: 'Mark your fix and save for reference.' },
   ];
 
   const faqs = [
-    {
-      q: 'Is Refixly free to use?',
-      a: 'Yes, the basic features are free. We plan to add premium features soon.',
-    },
-    {
-      q: 'Which devices are supported?',
-      a: 'Refixly works on any device with a webcam or camera, including desktops, laptops, tablets, and smartphones.',
-    },
-    {
-      q: 'Can I request tutorials for specific devices?',
-      a: 'Absolutely! You can submit requests, and our team curates new content regularly.',
-    },
+    { q: 'Is Refixly free to use?', a: 'Basic features are free. Premium features require a subscription.' },
+    { q: 'What devices are supported?', a: 'Smartphones, tablets, laptops, and small appliances.' },
+    { q: 'Do I need any tools?', a: 'No. A camera and internet connection are enough.' },
+    { q: 'Can I upload my own tutorials?', a: 'Yes! Share your knowledge with the community.' },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-[#0F172A] via-[#1E293B] to-[#334155] text-white font-sans overflow-x-hidden">
-      <style>{`
-        .faq-glow {
-          box-shadow: 0 0 12px 3px #38BDF8;
-          transition: box-shadow 0.3s ease-in-out;
-        }
-      `}</style>
-
-      {/* Header */}
-      <header className="max-w-7xl mx-auto flex justify-between items-center py-8 px-4 sm:px-6 md:px-20" data-aos="fade-down">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#38BDF8]">Refixly</h1>
-        <nav>
-          <ul className="hidden md:flex space-x-6 text-sm sm:text-base">
-            <li><a href="#how-it-works" className="hover:text-[#0EA5E9] transition">How It Works</a></li>
-            <li><a href="#features" className="hover:text-[#0EA5E9] transition">What Refixly Can Do</a></li>
-            <li><a href="#faq" className="hover:text-[#0EA5E9] transition">FAQ</a></li>
-            <li><a href="#ready" className="hover:text-[#0EA5E9] transition">Ready to Fix?</a></li>
-          </ul>
-        </nav>
-      </header>
+    <div className="bg-white text-gray-900">
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-16 text-center md:text-left" data-aos="fade-up">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
-          <div className="flex-1 max-w-xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-              Welcome to <span className="text-[#38BDF8]">Refixly</span>
-            </h1>
-            <p className="mt-6 text-[#94A3B8] text-base sm:text-lg leading-relaxed">
-              Your AI-powered DIY repair assistant. Detect. Learn. Repair.
-            </p>
-            <Link
-              to="/login"
-              className="inline-block mt-8 px-8 py-3 bg-[#38BDF8] text-black font-semibold rounded-full shadow-lg hover:bg-[#0EA5E9] transition"
-            >
-              Get Started
-            </Link>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png"
-              alt="Repair"
-              className="w-60 sm:w-80 md:w-[28rem] drop-shadow-2xl"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-right">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">How It Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center text-[#CBD5E1]">
-          {['🎥 Scan', '📚 Learn', '🛠️ Repair'].map((step, i) => (
-            <div key={i} className="bg-[#334155] p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
-              <h3 className="text-xl font-semibold mb-2">{step.split(' ')[1]}</h3>
-              <p>{['Use your webcam to scan the item.', 'Access step-by-step repair guides.', 'Follow tutorials to fix confidently.'][i]}</p>
-            </div>
-          ))}
+      <section
+        className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative text-white"
+        data-aos="fade-up"
+        style={{
+          backgroundImage: `url(${header})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-blue-900/70"></div>
+        <div className="relative z-10 max-w-4xl">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+            Own and Repair Smart
+          </h1>
+          <p className="text-lg mb-8 leading-relaxed">
+            Refixly is your AI-powered DIY assistant. Scan, Learn, and Repair—all from your pocket.
+          </p>
+          <button className="bg-blue-400 hover:bg-blue-300 text-white font-semibold px-8 py-3 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+            Get Started
+          </button>
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">What Refixly Can Do</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {features.map(({ title, desc }, i) => (
+      <section id="features" className="py-20 bg-white text-center px-6">
+        <h2 className="text-4xl font-bold mb-14 text-blue-900" data-aos="fade-right">
+          Powerful Features
+        </h2>
+        <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
+          {features.map((f, i) => (
             <div
               key={i}
-              className="bg-[#334155] rounded-2xl p-6 shadow-lg hover:scale-105 transition duration-300"
-              data-aos="fade-up"
-              data-aos-delay={i * 200}
+              className="p-8 border border-blue-300 rounded-2xl hover:shadow-xl transition-transform transform hover:scale-105"
+              data-aos="zoom-in"
+              data-aos-delay={i * 100}
             >
-              <h3 className="text-xl font-semibold mb-4 text-[#38BDF8]">{title}</h3>
-              <p className="text-[#CBD5E1]">{desc}</p>
+              <div className="text-6xl mb-5">{f.icon}</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-3">{f.title}</h3>
+              <p className="text-gray-700">{f.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20" data-aos="fade-up">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">Frequently Asked Questions</h2>
-        <FAQAccordion faqs={faqs} />
+      {/* Steps */}
+      <section id="tutorial" className="bg-blue-50 py-20 px-6">
+        <h2 className="text-4xl font-bold mb-16 text-center text-blue-900" data-aos="fade-left">
+          How It Works
+        </h2>
+        <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+          {steps.map((s, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 text-center"
+              data-aos="fade-up"
+              data-aos-delay={i * 200}
+            >
+              <div className="text-7xl mb-6">{s.icon}</div>
+              <h4 className="text-2xl font-semibold mb-3 text-blue-700">{s.title}</h4>
+              <p className="text-gray-700">{s.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Call To Action */}
-      <section id="ready" className="bg-[#0F172A] py-20 text-center" data-aos="zoom-in">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#38BDF8]">Ready to Fix it Yourself?</h2>
-        <p className="text-[#94A3B8] max-w-xl mx-auto mb-8">Join thousands of users who are repairing with confidence using Refixly.</p>
-        <Link
-          to="/login"
-          className="inline-block px-10 py-3 bg-[#38BDF8] text-black font-semibold rounded-full shadow-lg hover:bg-[#0EA5E9] transition"
-        >
+      {/* About */}
+      <section className="bg-blue-900 text-white py-20 px-6 text-center" data-aos="zoom-in">
+        <h2 className="text-4xl font-bold mb-8">About Refixly</h2>
+        <p className="max-w-4xl mx-auto text-lg">
+          Refixly empowers everyday users with the tools and guidance to fix their own devices—no
+          technician needed. Our blend of AI, AR, and community knowledge makes repair smart, simple, and sustainable.
+        </p>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white py-20 px-6 max-w-4xl mx-auto">
+        <h2 className="text-4xl font-bold mb-14 text-center text-blue-900" data-aos="fade-left">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          {faqs.map((faq, i) => (
+            <details
+              key={i}
+              className="border border-blue-300 rounded-lg p-5 cursor-pointer hover:bg-blue-50"
+              data-aos="fade-up"
+              data-aos-delay={i * 150}
+            >
+              <summary className="text-lg font-semibold text-blue-700">{faq.q}</summary>
+              <p className="mt-3 text-gray-700">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-blue-600 py-16 px-6 text-center text-white" data-aos="fade-up">
+        <h3 className="text-3xl font-bold mb-4">Ready to start fixing smarter?</h3>
+        <p className="mb-8 max-w-xl mx-auto">
+          Join thousands of users who trust Refixly to guide their DIY repair journeys.
+        </p>
+        <button className="bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-transform transform hover:scale-105">
           Get Started Now
-        </Link>
+        </button>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1E293B] py-8 text-center text-[#94A3B8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>&copy; 2025 Refixly. All rights reserved.</p>
-          <div className="flex space-x-6">
-            {['twitter', 'facebook', 'linkedin'].map((platform) => (
-              <a
-                key={platform}
-                href={`https://${platform}.com/yourhandle`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#38BDF8] transition"
-                aria-label={platform}
-              >
-                <i className={`fab fa-${platform} text-xl`}></i>
-              </a>
-            ))}
-          </div>
-        </div>
-        <ScrollToTop />
+      <footer className="bg-white text-gray-600 py-6 text-center text-sm border-t border-blue-200">
+        <p>&copy; {new Date().getFullYear()} Refixly. All rights reserved.</p>
       </footer>
     </div>
   );
 };
 
-export default Home;
+export default UserHome;

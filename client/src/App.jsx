@@ -1,8 +1,9 @@
 import {Routes, Route} from 'react-router-dom';
 
-import Home from "./Pages/Home"
+import Home from "./Pages/LandingPage"
 import Signup from "./Pages/Signup"
 import Login from "./Pages/Login"
+import UserHome from "./Pages/Home"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<UserHome />} />
       </Routes>
     </>
   )
