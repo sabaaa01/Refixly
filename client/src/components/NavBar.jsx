@@ -23,7 +23,7 @@ const NavBar = () => {
         <ul className="flex space-x-6 text-sm md:text-base font-medium items-center">
           <li><Link to="/userdashboard" className="hover:text-blue-300 transition">Home</Link></li>
           <li><Link to="/upload" className="hover:text-blue-300 transition">Tutorial</Link></li>
-          <li><Link to="/recommend" className="hover:text-blue-300 transition">Recommend</Link></li>
+          <li><Link to="/community" className="hover:text-blue-300 transition">Community</Link></li>
           <li><Link to="/contact" className="hover:text-blue-300 transition">Contact</Link></li>
           <li>
             <button

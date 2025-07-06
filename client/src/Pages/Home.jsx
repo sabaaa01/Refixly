@@ -3,7 +3,12 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/NavBar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import header from "../assets/header.jpg"; // Make sure this image exists
+import header from "../assets/header.jpg";
+import AR from "../assets/AR.png";
+import community from "../assets/community.png";
+import eco from "../assets/eco.png";
+import self from "../assets/self.png";
+import toolkit from "../assets/toolkit.png";
 
 const UserHome = () => {
   useEffect(() => {
@@ -83,6 +88,97 @@ const UserHome = () => {
         </div>
       </section>
 
+      {/*About*/}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold">About Refixly</h2>
+          <p className="mt-4 text-lg  mx-auto text-gray-400">
+            Refixly empowers everyday users with the tools and guidance to fix their own devices—no technician needed.
+            Our blend of AI, AR, and community knowledge makes repair smart, simple, and sustainable. Whether you're fixing a phone, tablet, or laptop,
+            we provide all the support you need—step-by-step and stress-free.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center mb-16 gap-10" data-aos="zoom-in">
+          <div className="md:w-1/2 text-left">
+            <h3 className="text-2xl font-semibold mb-4">Smart Diagnostics</h3>
+            <p className="text-lg mb-4">
+              Our AI-powered diagnostics system can detect common device issues just by asking you a few questions or analyzing device behavior.
+              No more searching endless forums—get a fast, intelligent diagnosis.
+            </p>
+            <p className="text-lg">
+              This feature is designed to assist both beginners and experienced users in identifying exact faults in their devices without trial and error.
+            </p>
+          </div>
+          <div className="md:w-1/2">
+            <img src={self} alt="Smart Diagnostics" className="rounded-xl shadow-lg w-[80%] mx-auto" />
+          </div>
+        </div>
+
+        <div className="flex flex-col-reverse md:flex-row items-center mb-16 gap-10" data-aos="zoom-in">
+          <div className="md:w-1/2">
+            <img src={AR} alt="AR Assistance" className="rounded-xl shadow-lg w-[80%] mx-auto" />
+          </div>
+          <div className="md:w-1/2 text-left">
+            <h3 className="text-2xl font-semibold mb-4">Augmented Reality Assistance</h3>
+            <p className="text-lg mb-4">
+              Use our AR-guided instructions to repair devices with confidence. Point your camera and see real-time overlays guiding you where to tap,
+              unscrew, or replace components.
+            </p>
+            <p className="text-lg">
+              Perfect for visual learners and first-time repairers, our AR makes complex tasks feel like a breeze.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center mb-16 gap-10" data-aos="zoom-in">
+          <div className="md:w-1/2 text-left">
+            <h3 className="text-2xl font-semibold mb-4">Eco-Friendly Repairs</h3>
+            <p className="text-lg mb-4">
+              Refixly encourages users to repair rather than replace. Each repair helps reduce the growing pile of e-waste and lowers your carbon footprint.
+            </p>
+            <p className="text-lg">
+              By extending the lifespan of your electronics, you’re contributing to a more sustainable planet—and saving money too.
+            </p>
+          </div>
+          <div className="md:w-1/2">
+            <img src={eco} alt="Eco Repair" className="rounded-xl shadow-lg w-[65%] mx-auto" />
+          </div>
+        </div>
+
+        <div className="flex flex-col-reverse md:flex-row items-center mb-16 gap-10" data-aos="zoom-in">
+          <div className="md:w-1/2">
+            <img src={community} alt="Community" className="rounded-xl shadow-lg w-[80%] mx-auto" />
+          </div>
+          <div className="md:w-1/2 text-left">
+            <h3 className="text-2xl font-semibold mb-4">Community-Driven Solutions</h3>
+            <p className="text-lg mb-4">
+              Join a vibrant community of tinkerers, technicians, and learners. Share repair tips, ask for advice, or explore crowd-sourced solutions
+              from people who’ve fixed the same issue you’re facing.
+            </p>
+            <p className="text-lg">
+              Our forums and repair logs make it easy to connect, learn, and grow your skills alongside others.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center gap-10" data-aos="zoom-in">
+          <div className="md:w-1/2 text-left">
+            <h3 className="text-2xl font-semibold mb-4">One-Stop Repair Toolkit</h3>
+            <p className="text-lg mb-4">
+              Everything you need in one place: step-by-step repair guides, video walkthroughs, tool recommendations, and where to buy parts.
+              Stop wasting time looking in multiple places—we’ve got it all in one dashboard.
+            </p>
+            <p className="text-lg">
+              Our toolkit is user-friendly, constantly updated, and adaptable to new devices and technologies.
+            </p>
+          </div>
+          <div className="md:w-1/2">
+            <img src={toolkit} alt="Repair Toolkit" className="rounded-xl shadow-lg w-[80%] mx-auto" />
+          </div>
+        </div>
+      </section>
+
       {/* Steps */}
       <section id="tutorial" className="bg-blue-50 py-20 px-6">
         <h2 className="text-4xl font-bold mb-16 text-center text-blue-900" data-aos="fade-left">
@@ -103,18 +199,11 @@ const UserHome = () => {
           ))}
         </div>
       </section>
+      
 
-      {/* About */}
-      <section className="bg-blue-900 text-white py-20 px-6 text-center" data-aos="zoom-in">
-        <h2 className="text-4xl font-bold mb-8">About Refixly</h2>
-        <p className="max-w-4xl mx-auto text-lg">
-          Refixly empowers everyday users with the tools and guidance to fix their own devices—no
-          technician needed. Our blend of AI, AR, and community knowledge makes repair smart, simple, and sustainable.
-        </p>
-      </section>
 
       {/* FAQ */}
-      <section className="bg-white py-20 px-6 max-w-4xl mx-auto">
+      <section className="bg-white py-20 px-6 max-w-4xl mx-auto" data-aos="zoom-in">
         <h2 className="text-4xl font-bold mb-14 text-center text-blue-900" data-aos="fade-left">
           Frequently Asked Questions
         </h2>
