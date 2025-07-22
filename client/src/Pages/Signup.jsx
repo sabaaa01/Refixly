@@ -1,9 +1,9 @@
 // src/Pages/Signup.jsx
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaUser, FaLock, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
 
 const Signup = () => {
@@ -27,6 +27,16 @@ const Signup = () => {
       alert(err.message);
     }
   };
+
+  const handleGoogleSignUp = async () => {
+  try {
+    await signInWithPopup(auth, provider);
+    alert('Google signup successful!');
+    navigate('/home');
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
   return (
     <div
@@ -72,6 +82,14 @@ const Signup = () => {
 
           <button type="submit" className="w-full py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900">
             Sign up
+          </button>
+
+          <button
+            type="button"
+            onClick={handleGoogleSignUp}
+            className="w-full flex items-center justify-center gap-3 mt-3 py-3 border border-gray-400 rounded-full hover:bg-gray-100"
+          >
+            <FaGoogle /> Continue with Google
           </button>
 
           <p className="text-sm text-gray-600 text-center mt-4">
