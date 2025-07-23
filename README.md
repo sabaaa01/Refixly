@@ -230,3 +230,4 @@ See the [LICENSE](LICENSE) file for details.
 
 > 🛠️ *Refixly – Let’s fix the future, one repair at a time.*
 
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
