@@ -233,10 +233,6 @@ const UserHome = () => {
         </button>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-white text-gray-600 py-6 text-center text-sm border-t border-blue-200">
-        <p>&copy; {new Date().getFullYear()} Refixly. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
