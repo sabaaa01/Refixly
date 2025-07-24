@@ -6,6 +6,10 @@ body {
   @apply overflow-x-hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 .faq-glow {
   box-shadow: 0 0 12px 3px #38BDF8;
