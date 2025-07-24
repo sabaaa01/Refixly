@@ -25,13 +25,13 @@ const NavBar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent text-white backdrop-blur-sm" aria-label="Main Navigation">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <NavLink to="/userdashboard">
+        <NavLink to="/">
           <h1 className="text-2xl font-bold text-blue-400">Refixly</h1>
         </NavLink>
 
         <ul className="flex space-x-6 text-sm md:text-base font-medium items-center">
           <li>
-            <NavLink to="/userdashboard" className={linkClass}>
+            <NavLink to="/" className={linkClass}>
               Home
             </NavLink>
           </li>
