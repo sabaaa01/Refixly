@@ -44,6 +44,7 @@ const UserHome = () => {
 
       {/* Hero Section */}
       <section
+        id='hero-section'
         className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative text-white"
         data-aos="fade-up"
         style={{
@@ -199,7 +200,7 @@ const UserHome = () => {
           ))}
         </div>
       </section>
-      
+
 
 
       {/* FAQ */}
