@@ -22,7 +22,7 @@ const Signup = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       alert('Signup Successful!');
-      navigate('/login');
+      navigate('/home');
     } catch (err) {
       alert(err.message);
     }
