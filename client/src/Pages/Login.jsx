@@ -5,13 +5,15 @@ import { auth, provider } from '../firebase';
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from 'firebase/auth';
 import { FaUser, FaLock, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
-import toast from 'react-hot-toast'
+import toast, { LoaderIcon } from 'react-hot-toast'
+import { Loader2 } from 'lucide-react'
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -19,13 +21,16 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login Successful!")
-      
       navigate('/home');
     } catch (error) {
       toast.error(error.message)
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -36,7 +41,7 @@ const Login = () => {
       navigate('/home');
     } catch (error) {
       toast.error(error.message)
-      }
+    }
   };
 
   const handleForgotPassword = async () => {
@@ -109,7 +114,12 @@ const Login = () => {
           </div>
 
           <button type="submit" className="w-full py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900">
-            Login
+            {isLoading ?
+              <span className=' flex justify-center items-center'>
+                <Loader2 className='animate-spin' />
+              </span>
+              :
+              <span>Login</span>}
           </button>
 
           <button
