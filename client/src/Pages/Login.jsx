@@ -5,6 +5,7 @@ import { auth, provider } from '../firebase';
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from 'firebase/auth';
 import { FaUser, FaLock, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,33 +21,34 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert('Login Successful!');
+      toast.success("Login Successful!")
+      
       navigate('/home');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message)
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, provider);
-      alert('Google login successful!');
+      toast.success("Google login successful!")
       navigate('/home');
     } catch (error) {
-      alert(error.message);
-    }
+      toast.error(error.message)
+      }
   };
 
   const handleForgotPassword = async () => {
     if (!email) {
-      alert('Please enter your email address first.');
+      toast("Please enter your email address")
       return;
     }
     try {
       await sendPasswordResetEmail(auth, email);
-      alert('Password reset email sent! Please check your inbox.');
+      toast.success("Password reset email sent! Please check your inbox.")
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message)
     }
   };
 
