@@ -6,12 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaLock, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
 import toast from 'react-hot-toast';
+import { Loader2 } from 'lucide-react'
+
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -20,12 +23,15 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success('Signup Successful!');
       navigate('/home');
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -82,7 +88,12 @@ const Signup = () => {
           </div>
 
           <button type="submit" className="w-full py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900">
-            Sign up
+            {isLoading ?
+              <span className=' flex justify-center items-center'>
+                <Loader2 className='animate-spin' />
+              </span>
+              :
+              <span>Sign up</span>}
           </button>
 
           <button

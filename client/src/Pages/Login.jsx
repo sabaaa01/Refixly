@@ -5,7 +5,7 @@ import { auth, provider } from '../firebase';
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from 'firebase/auth';
 import { FaUser, FaLock, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
-import toast, { LoaderIcon } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { Loader2 } from 'lucide-react'
 
 const Login = () => {
