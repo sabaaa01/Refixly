@@ -5,38 +5,45 @@ import { auth, provider } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaLock, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import authBg from '../assets/auth-bg.png';
+import toast from 'react-hot-toast';
+import { Loader2 } from 'lucide-react'
+
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(false)
+
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-  
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Signup Successful!');
-      navigate('/login');
+      toast.success('Signup Successful!');
+      navigate('/home');
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
+    } finally {
+      setIsLoading(false)
     }
   };
 
   const handleGoogleSignUp = async () => {
-  try {
-    await signInWithPopup(auth, provider);
-    alert('Google signup successful!');
-    navigate('/home');
-  } catch (error) {
-    alert(error.message);
-  }
-};
+    try {
+      await signInWithPopup(auth, provider);
+      toast.success('Google signup successful!');
+      navigate('/home');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div
@@ -63,12 +70,12 @@ const Signup = () => {
           <div className="relative">
             <span className="absolute left-3 top-4 text-gray-400"><FaLock /></span>
             <input
-                type={showPassword ? 'text' : 'password'} // toggle type
-                placeholder="Password"
-                className="w-full py-3 pl-10 pr-10 rounded-full border border-gray-300 focus:outline-none"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+              type={showPassword ? 'text' : 'password'} // toggle type
+              placeholder="Password"
+              className="w-full py-3 pl-10 pr-10 rounded-full border border-gray-300 focus:outline-none"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <button
               type="button"
@@ -81,7 +88,12 @@ const Signup = () => {
           </div>
 
           <button type="submit" className="w-full py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900">
-            Sign up
+            {isLoading ?
+              <span className=' flex justify-center items-center'>
+                <Loader2 className='animate-spin' />
+              </span>
+              :
+              <span>Sign up</span>}
           </button>
 
           <button
