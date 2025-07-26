@@ -1,5 +1,5 @@
 // src/components/NavBar.jsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
@@ -54,22 +54,22 @@ const NavBar = () => {
 
         <ul className="flex space-x-6 text-sm md:text-base font-medium items-center">
           <li>
-            <NavLink to="/" className={linkClass}>
+            <NavLink to="/userdashboard" className={linkClass + ' tour-step-4'}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/upload" className={linkClass}>
+            <NavLink to="/upload" className={linkClass + ' tour-step-5'}>
               Tutorial
             </NavLink>
           </li>
           <li>
-            <NavLink to="/community" className={linkClass}>
+            <NavLink to="/community" className={linkClass + ' tour-step-6'}>
               Community
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className={linkClass}>
+            <NavLink to="/contact" className={linkClass + ' tour-step-7'}>
               Contact
             </NavLink>
           </li>
@@ -78,7 +78,7 @@ const NavBar = () => {
               onClick={handleLogout}
               aria-label="Logout"
               data-testid="logout-button"
-              className="px-4 py-1 rounded-full bg-blue-500 text-white hover:bg-blue-400 transition"
+              className="px-4 py-1 rounded-full bg-blue-500 text-white hover:bg-blue-400 transition tour-step-8"
             >
               Logout
             </button>
