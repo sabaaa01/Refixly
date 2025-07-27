@@ -6,41 +6,8 @@ import '../index.css';
 import ScrollToTop from '../components/ScrollTop';
 import { FaTwitter, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import Tour from '../components/Tour';
+import FAQAccordion from '../components/FAQAccordion';
 
-const FAQAccordion = ({ faqs }) => {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (i) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto space-y-4">
-      {faqs.map(({ q, a }, i) => (
-        <div
-          key={i}
-          className={`bg-[#334155] rounded-2xl shadow-lg cursor-pointer select-none ${
-            openIndex === i ? 'faq-glow' : ''
-          }`}
-          onClick={() => toggle(i)}
-          aria-expanded={openIndex === i}
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') toggle(i);
-          }}
-        >
-          <div className="flex justify-between items-center p-6">
-            <h3 className="text-xl font-semibold">{q}</h3>
-            <span className="text-[#38BDF8] text-2xl">{openIndex === i ? '−' : '+'}</span>
-          </div>
-          {openIndex === i && (
-            <p className="px-6 pb-6 text-[#CBD5E1] border-t border-[#38BDF8]">{a}</p>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 const Home = () => {
   const [showTour, setShowTour] = useState(false);
@@ -171,10 +138,16 @@ const Home = () => {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20 tour-step-11" data-aos="fade-up">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">Frequently Asked Questions</h2>
-        <FAQAccordion faqs={faqs} />
-      </section>
+      <section
+  id="faq"
+  className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-20"
+>
+  <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">
+    Frequently Asked Questions
+  </h2>
+  <FAQAccordion faqs={faqs} />
+</section>
+
 
       {/* Call To Action */}
       <section id="ready" className="bg-[#0F172A] py-20 text-center tour-step-12" data-aos="zoom-in">
