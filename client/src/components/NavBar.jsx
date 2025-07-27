@@ -54,7 +54,7 @@ const NavBar = () => {
 
         <ul className="flex space-x-6 text-sm md:text-base font-medium items-center">
           <li>
-            <NavLink to="/userdashboard" className={linkClass + ' tour-step-4'}>
+            <NavLink to="/home" className={linkClass + ' tour-step-4'}>
               Home
             </NavLink>
           </li>
