@@ -5,7 +5,6 @@ import Home from "./Pages/LandingPage"
 import Signup from "./Pages/Signup"
 import Login from "./Pages/Login"
 import UserHome from "./Pages/Home"
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
       </Routes>
 
       <Toaster />
-      <Footer />
     </>
   )
 };
