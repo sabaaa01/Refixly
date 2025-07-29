@@ -9,7 +9,7 @@ import UserHome from "./Pages/Home"
 import Contact from "./Pages/Contact"
 import Tutorial from "./Pages/Tutorial"
 import Community from "./Pages/Community"
-import Footer from "./components/Foote
+import Footer from "./components/Footer"
 
 function App() {
   return (
