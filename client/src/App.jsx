@@ -5,10 +5,11 @@ import Home from "./Pages/LandingPage"
 import Signup from "./Pages/Signup"
 import Login from "./Pages/Login"
 import UserHome from "./Pages/Home"
+
 import Contact from "./Pages/Contact"
 import Tutorial from "./Pages/Tutorial"
 import Community from "./Pages/Community"
-import Footer from "./components/Footer";
+import Footer from "./components/Foote
 
 function App() {
   return (
@@ -24,7 +25,6 @@ function App() {
       </Routes>
 
       <Toaster />
-      <Footer />
     </>
   )
 };
