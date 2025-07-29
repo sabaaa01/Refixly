@@ -160,45 +160,6 @@ const Home = () => {
           Get Started Now
         </Link>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#1E293B] py-8 text-center text-[#94A3B8] tour-step-footer">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>&copy; 2025 Refixly. All rights reserved.</p>
-
-          <div className="flex space-x-6 text-xl">
-            <a
-              href="https://twitter.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="Twitter"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://facebook.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="Facebook"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#38BDF8] transition"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn />
-            </a>
-          </div>
-        </div>
-
-        <ScrollToTop />
-      </footer>
     </div>
   );
 };
