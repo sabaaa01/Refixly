@@ -185,26 +185,18 @@ const Home = () => {
   </div>
 </section>
 
-{/* Call To Action */}
-<section
-  id="ready"
-  className="bg-[#0F172A] py-20 text-center"
-  data-aos="zoom-in"
->
-  <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#38BDF8]">
-    Ready to Fix it Yourself?
-  </h2>
-  <p className="text-[#94A3B8] max-w-xl mx-auto mb-8">
-    Join thousands of users who are repairing with confidence using Refixly.
-  </p>
-  <Link
-    to="/login"
-    className="inline-block mt-8 px-10 py-3 text-white font-semibold uppercase text-lg border-2 border-white rounded-full bg-transparent transition-all duration-500 ease-in-out hover:bg-white hover:text-[#001F3F] hover:shadow-[0_0_25px_8px_rgba(255,255,255,0.4)] hover:scale-105"
-  >
-    Get Started Now
-  </Link>
-</section>
-</div>
+      {/* Call To Action */}
+      <section id="ready" className="bg-[#0F172A] py-20 text-center tour-step-12" data-aos="zoom-in">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#38BDF8]">Ready to Fix it Yourself?</h2>
+        <p className="text-[#94A3B8] max-w-xl mx-auto mb-8">Join thousands of users who are repairing with confidence using Refixly.</p>
+        <Link
+          to="/login"
+          className="inline-block px-10 py-3 bg-[#38BDF8] text-black font-semibold rounded-full shadow-lg hover:bg-[#0EA5E9] transition"
+        >
+          Get Started Now
+        </Link>
+      </section>
+    </div>
   );
 };
 
